@@ -15,6 +15,8 @@ class CustomsController < ApplicationController
   # GET /customs/new
   def new
     @custom = Custom.new
+    @user = current_user
+    @kind = Kind.all
   end
 
   # GET /customs/1/edit
@@ -69,6 +71,6 @@ class CustomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_params
-      params.require(:custom).permit(:name, :kind, :user_id)
+      params.require(:custom).permit(:name, :kind_id, :user_id)
     end
 end
