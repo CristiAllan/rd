@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contact Customs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Contact</th>
+      <th>Custom</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contact_customs.each do |contact_custom| %>
+      <tr>
+        <td><%= contact_custom.value %></td>
+        <td><%= contact_custom.contact %></td>
+        <td><%= contact_custom.custom %></td>
+        <td><%= link_to 'Show', contact_custom %></td>
+        <td><%= link_to 'Edit', edit_contact_custom_path(contact_custom) %></td>
+        <td><%= link_to 'Destroy', contact_custom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact Custom', new_contact_custom_path %>
