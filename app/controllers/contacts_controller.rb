@@ -15,7 +15,9 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    #@contact.build_contact_custom
     @user = current_user
+    @usercustom = Custom.where(user_id: @user)
   end
 
   # GET /contacts/1/edit
@@ -31,6 +33,7 @@ class ContactsController < ApplicationController
       if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
+
       else
         format.html { render :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }

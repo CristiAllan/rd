@@ -17,12 +17,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :kind %>
+    <%= f.label :kind_id %>
     <%= 
-        #f.number_field :kind 
-        #f.collection_select(:city_id, City.all, :id, :name)
-        f.collection_select(:kind, @kind, :id, :description )
-        #f.input :kind, :as => :select, :collection => Custom.kinds.keys.to_a
+    
+        f.collection_select(:kind_id, @kind, :id, :description )
 
     %>
   </div>

@@ -1,6 +1,6 @@
 class CustomsController < ApplicationController
   before_action :set_custom, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_kind_and_user, only:  [:new, :edit]
   # GET /customs
   # GET /customs.json
   def index
@@ -15,8 +15,6 @@ class CustomsController < ApplicationController
   # GET /customs/new
   def new
     @custom = Custom.new
-    @user = current_user
-    @kind = Kind.all
   end
 
   # GET /customs/1/edit
@@ -72,5 +70,10 @@ class CustomsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_params
       params.require(:custom).permit(:name, :kind_id, :user_id)
+    end
+
+    def set_kind_and_user
+      @user = current_user
+      @kind = Kind.all
     end
 end
