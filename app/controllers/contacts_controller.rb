@@ -24,6 +24,7 @@ class ContactsController < ApplicationController
   def edit
     @user = current_user
     @usercustom = Custom.where(user_id: @user)
+    #binding pry
   end
 
   # POST /contacts
