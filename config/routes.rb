@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contact_customs
+  #resources :contact_customs
   resources :customs
   resources :contacts
   root 'welcome#index'

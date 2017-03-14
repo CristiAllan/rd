@@ -23,16 +23,16 @@
 
   <div class="field">
     <%= 
-      f.hidden_field :user_id, value: @user.id 
+      f.hidden_field :user_id, value: @user.id
     %>
   </div>
     
-    <%= f.fields_for :contact_custom do |cc| %>
+    <%= f.fields_for :contact_customs do |cc| %>
       <% @usercustom.each do |custom| %>
         <div class="field">
           <%= cc.hidden_field :custom_id, value: custom.id %>
 
-          <%= cc.label :value %>
+          <%= cc.label custom.name %>
           <%= cc.text_field :value %>
 
 

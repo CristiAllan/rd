@@ -15,13 +15,15 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
-    #@contact.build_contact_custom
+    @contact.contact_customs.build
     @user = current_user
     @usercustom = Custom.where(user_id: @user)
   end
 
   # GET /contacts/1/edit
   def edit
+    @user = current_user
+    @usercustom = Custom.where(user_id: @user)
   end
 
   # POST /contacts
@@ -29,6 +31,7 @@ class ContactsController < ApplicationController
   def create
     @usercustom = Custom.where(user_id: @user)
     @contact = Contact.new(contact_params)
+    @contact.contact_customs.build
     #binding pry
 
     respond_to do |format|
@@ -76,6 +79,6 @@ class ContactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:email, :name, :user_id, 
-        contact_custom_attributes: [ :id, :value, :custom_id ])
+        contact_customs_attributes: [ :id, :value, :custom_id ])
     end
 end

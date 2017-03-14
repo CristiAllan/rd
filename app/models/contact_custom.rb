@@ -1,4 +1,4 @@
 class ContactCustom < ApplicationRecord
-  belongs_to :contact
-  belongs_to :custom
+  has_one :contact
+  has_one :custom
 end
