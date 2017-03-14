@@ -1,3 +1,31 @@
+
+Skip to content
+This repository
+
+    Pull requests
+    Issues
+    Gist
+
+    @CristiAllan
+
+1
+0
+
+    1
+
+CristiAllan/rd
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Wiki
+Pulse
+Graphs
+Settings
+rd/app/views/contacts/_form.html.erb
+b2a28bc 5 hours ago
+@CristiAllan CristiAllan Registering only one custom, next task is review the each on form
+47 lines (37 sloc) 1006 Bytes
 <%= form_for(contact) do |f| %>
   <% if contact.errors.any? %>
     <div id="error_explanation">
@@ -34,6 +62,8 @@
 
           <%= cc.label custom.name %>
           <%= cc.text_field :value %>
+
+
         </div>
       <% end %>
     <% end %>
@@ -42,3 +72,8 @@
       <%= f.submit %>
     </div>
 <% end %>
+
+    Contact GitHub API Training Shop Blog About 
+
+    © 2017 GitHub, Inc. Terms Privacy Security Status Help 
+
