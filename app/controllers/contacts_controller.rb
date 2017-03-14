@@ -27,8 +27,9 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+    @usercustom = Custom.where(user_id: @user)
     @contact = Contact.new(contact_params)
-    binding pry
+    #binding pry
 
     respond_to do |format|
       if @contact.save
@@ -74,6 +75,7 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:email, :name, :user_id, contact_customs_attributes:[ :value, :contact_id, :custom_id ])
+      params.require(:contact).permit(:email, :name, :user_id, 
+        contact_custom_attributes: [ :id, :value, :custom_id ])
     end
 end
