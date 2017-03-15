@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_and_custom, only: [ :new, :create, :edit ]
 
   # GET /contacts
   # GET /contacts.json
@@ -16,20 +17,15 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     @contact.contact_customs.build
-    @user = current_user
-    @usercustom = Custom.where(user_id: @user)
   end
 
   # GET /contacts/1/edit
   def edit
-    @user = current_user
-    @usercustom = Custom.where(user_id: @user)
   end
 
   # POST /contacts
   # POST /contacts.json
   def create
-    @usercustom = Custom.where(user_id: @user)
     @contact = Contact.new(contact_params)
     @contact.contact_customs.build
     #binding pry
@@ -76,9 +72,14 @@ class ContactsController < ApplicationController
       @contact = Contact.find(params[:id])
     end
 
+    def set_user_and_custom
+      @user = current_user
+      @usercustom = Custom.where(user_id: @user)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:email, :name, :user_id, 
-        contact_customs_attributes: [ :id, :value, :custom_id ])
+        contact_customs_attributes: [ :id, :value, :custom_id, custom_attributes: [ :id ] ])
     end
 end

@@ -1,4 +1,6 @@
 class ContactCustom < ApplicationRecord
-  has_one :contact
-  has_one :custom
+  belongs_to :contact
+  belongs_to :custom
+
+  accepts_nested_attributes_for :custom
 end
