@@ -5,4 +5,6 @@ class Custom < ApplicationRecord
 
   has_many :contacts, through: :contact_customs
 
+  validates :name, presence: true
+
 end

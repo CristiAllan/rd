@@ -5,5 +5,6 @@ class Contact < ApplicationRecord
   
   accepts_nested_attributes_for :contact_customs
 
+  validates :name, :email, presence: true
 
 end
