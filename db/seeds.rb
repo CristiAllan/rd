@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Kind.create(description: "checkBox")
+Kind.create(description: "Text")
+Kind.create(description: "TextArea")
