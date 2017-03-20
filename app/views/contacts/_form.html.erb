@@ -26,18 +26,17 @@
       f.hidden_field :user_id, value: @user.id
     %>
   </div>
-  
-    <% @usercustom.each do |c| %>  
-      <%= f.fields_for :contact_customs do |cc| %>
 
+      
+     <% @usercustom.each do |c| %>  
+      <%= f.fields_for :contact_customs do |cc| %>
         <div class="field">
+            <%= cc.hidden_field :custom_id, value: c.id %>
             <%= cc.label :value, c.name %>
             <%= cc.text_field :value %>
         </div>
 
-        <%= cc.fields_for :custom do |custom| %>
-              <%= custom.hidden_field :id %>
-        <% end %>
+        
       <% end %>
     <% end %>
 
