@@ -28,15 +28,27 @@
   </div>
 
       
-     <% @usercustom.each do |c| %>  
+    <% @usercustom.each do |c| %>  
       <%= f.fields_for :contact_customs do |cc| %>
         <div class="field">
-            <%= cc.hidden_field :custom_id, value: c.id %>
+          <%= cc.hidden_field :custom_id, value: c.id %>
+          <% if c.kind.id == 1 %>
             <%= cc.label :value, c.name %>
             <%= cc.text_field :value %>
+          <% end %>
         </div>
-
-        
+        <div class="field">
+          <% if c.kind.id == 2 %>
+            <%= cc.label :value, c.name %>
+            <%= cc.text_area :value %>
+          <% end %>
+        </div>
+        <div class="field">
+          <% if c.kind.id == 3 %>
+            <%= check_box_tag :value, checked: true, value: c.name %>
+            <%= label_tag(:value, c.name) %>
+          <% end %>
+        </div>    
       <% end %>
     <% end %>
 
