@@ -45,8 +45,8 @@
         </div>
         <div class="field">
           <% if c.kind.id == 3 %>
-            <%= check_box_tag :value, checked: true, value: c.name %>
-            <%= label_tag(:value, c.name) %>
+            <%= check_box :value, c.name %>
+            <%= label :value, c.name %>
           <% end %>
         </div>    
       <% end %>
